@@ -86,21 +86,29 @@ final class HttpRequest implements Runnable {
 	{
 		// STEP 2a: Parse the HTTP Request message
 		// Get a reference to the socket's input and output streams
+		DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+		BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		
 		// Set up input stream filters
 		
 		// Get the request line of the HTTP request message
 		String requestLine;
+		requestLine = in.readLine();
 
 		// Display the request line
 		System.out.println();
-		System.out.println(requestLine);
+		//System.out.println(requestLine);
 
 		// Get and display the header lines
 
-
+		while(requestLine != CRLF && requestLine != "\n" && requestLine != null) {
+			System.out.println(requestLine);
+			requestLine = in.readLine();
+		}
+		
 		// (The last part of STEP 2 is at the end of this method)
 		// (Close the socket)
+		//socket.close();
 		
 		// STEP 3a: Prepare and Send the HTTP Response message
 		// Extract the filename from the request line
@@ -140,6 +148,9 @@ final class HttpRequest implements Runnable {
 
 
 		// STEP 2b: Close the input/output streams and socket before returning
+		in.close();
+		out.close();
+		socket.close();
 	}
 	
 	/**
