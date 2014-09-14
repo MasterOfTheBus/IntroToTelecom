@@ -1,0 +1,130 @@
+$ tracert www.cnn.com
+
+Tracing route to cnn-56m.gslb.vgtf.net [157.166.249.11]
+over a maximum of 30 hops:
+
+  1    14 ms     4 ms     1 ms  mynetwork [192.168.2.1]
+  2    47 ms    20 ms     6 ms  bas2-montreal42_lo0_SYMP.net.bell.ca [64.230.200.46]
+  3     7 ms     5 ms     6 ms  agg2-montreal02_10GE3-0-0_100.net.bell.ca [64.230.32.32]
+  4    21 ms    23 ms    27 ms  core3-montreal02_xe0-8-2-0_core.net.bell.ca [64.230.170.245]
+  5    36 ms    15 ms    35 ms  newcore2-newyork83_so5-0-0_0 [64.230.187.236]
+  6    21 ms    21 ms    20 ms  bxX5-newyork83_POS9-0-0.net.bell.ca [64.230.187.42]
+  7    22 ms    22 ms    19 ms  peer-XOCommunications_bx5-newyork83.net.bell.ca [64.230.187.70]
+  8    53 ms    55 ms    49 ms  207.88.14.185.ptr.us.xo.net [207.88.14.185]
+  9    48 ms    46 ms    48 ms  207.88.13.13.ptr.us.xo.net [207.88.13.13]
+ 10     *        *        *     Request timed out.
+ 11     *        *        *     Request timed out.
+ 12     *        *        *     Request timed out.
+ 13     *        *        *     Request timed out.
+ 14     *        *        *     Request timed out.
+ 15     *        *        *     Request timed out.
+ 16     *        *        *     Request timed out.
+ 17     *        *        *     Request timed out.
+ 18     *        *        *     Request timed out.
+ 19     *        *        *     Request timed out.
+ 20     *        *        *     Request timed out.
+ 21     *        *        *     Request timed out.
+ 22     *        *        *     Request timed out.
+ 23     *        *        *     Request timed out.
+ 24     *        *        *     Request timed out.
+ 25     *        *        *     Request timed out.
+ 26     *        *        *     Request timed out.
+ 27     *        *        *     Request timed out.
+ 28     *        *        *     Request timed out.
+ 29     *        *        *     Request timed out.
+ 30     *        *        *     Request timed out.
+
+Trace complete.
+
+
+==========
+
+
+$ tracert www.google.ca
+
+Tracing route to www.google.ca [173.194.43.119]
+over a maximum of 30 hops:
+
+  1     5 ms     1 ms     3 ms  mynetwork [192.168.2.1]
+  2    10 ms     6 ms     6 ms  bas2-montreal42_lo0_SYMP.net.bell.ca [64.230.200.46]
+  3     8 ms     7 ms    11 ms  agg2-montreal02_10GE3-0-0_100.net.bell.ca [64.230.32.32]
+  4    25 ms    21 ms    19 ms  core3-montreal02_xe0-8-2-0_core.net.bell.ca [64.230.170.245]
+  5    15 ms    13 ms    18 ms  newcore1-newyork83_so1-0-0.net.bell.ca [64.230.187.129]
+  6    19 ms    18 ms    19 ms  bx7-newyork83_bundle-ether1.net.bell.ca [64.230.127.245]
+  7    34 ms    14 ms    14 ms  72.14.221.241
+  8    21 ms    21 ms    18 ms  209.85.248.178
+  9    26 ms    22 ms    67 ms  209.85.252.242
+ 10    30 ms    27 ms    26 ms  72.14.236.227
+ 11    64 ms    23 ms    23 ms  72.14.239.73
+ 12    26 ms    23 ms    21 ms  yyz08s10-in-f23.1e100.net [173.194.43.119]
+
+Trace complete.
+
+
+=========
+
+
+$ tracert www.facebook.com
+
+Tracing route to star.c10r.facebook.com [31.13.71.144]
+over a maximum of 30 hops:
+
+  1    14 ms     1 ms     1 ms  mynetwork [192.168.2.1]
+  2     9 ms     7 ms     8 ms  bas2-montreal42_lo0_SYMP.net.bell.ca [64.230.200.46]
+  3     9 ms     7 ms     7 ms  agg2-montreal02_10GE3-0-0_100.net.bell.ca [64.230.32.32]
+  4    25 ms    30 ms    23 ms  core3-montreal02_xe0-8-2-0_core.net.bell.ca [64.230.170.245]
+  5    62 ms    25 ms    26 ms  newcore1-newyork83_so1-0-0.net.bell.ca [64.230.187.129]
+  6    70 ms    16 ms    31 ms  bx6-newyork83_xe3-0-0.net.bell.ca [64.230.187.158]
+  7    17 ms    18 ms    16 ms  facebook_bx6-newyork83 [184.150.181.185]
+  8     *        *        *     Request timed out.
+  9     *        *        *     Request timed out.
+ 10    32 ms    14 ms    35 ms  edge-star-shv-10-lga1.facebook.com [31.13.71.144]
+
+Trace complete.
+
+
+=========
+
+
+$ tracert www.nationalpost.com
+
+Tracing route to a908.g.akamai.net [67.69.197.144]
+over a maximum of 30 hops:
+
+  1     2 ms     1 ms     1 ms  mynetwork [192.168.2.1]
+  2     5 ms     4 ms     4 ms  bas2-montreal42_lo0_SYMP.net.bell.ca [64.230.200.46]
+  3     5 ms     4 ms     4 ms  agg2-montreal02_10GE3-0-0_100.net.bell.ca [64.230.32.32]
+  4     9 ms     6 ms     7 ms  core4-montreal02_xe0-8-2-0_core.net.bell.ca [64.230.170.253]
+  5    23 ms     6 ms     4 ms  bx7-montreal02_xe7-0-0.net.bell.ca [64.230.90.39]
+  6     5 ms     4 ms     4 ms  67.69.197.144
+
+Trace complete.
+
+
+==========
+
+
+$ tracert www.baidu.com
+
+Tracing route to www.a.shifen.com [180.76.3.151]
+over a maximum of 30 hops:
+
+  1     2 ms     1 ms     1 ms  mynetwork [192.168.2.1]
+  2     6 ms    24 ms     5 ms  bas2-montreal42_lo0_SYMP.net.bell.ca [64.230.200.46]
+  3    35 ms     4 ms     7 ms  agg2-montreal02_10GE3-0-0_100.net.bell.ca [64.230.32.32]
+  4    19 ms    19 ms    19 ms  core3-montreal02_xe0-8-2-0_core.net.bell.ca [64.230.170.245]
+  5    15 ms    14 ms    14 ms  newcore1-newyork83_so1-0-0.net.bell.ca [64.230.187.129]
+  6    16 ms    14 ms    24 ms  bx6-newyork83_xe3-0-0.net.bell.ca [64.230.187.158]
+  7    17 ms    24 ms    14 ms  NTTVerio_bx6-newyork83 [184.150.181.191]
+  8    13 ms    16 ms    11 ms  ae-1.r22.nycmny01.us.bb.gin.ntt.net [129.250.4.172]
+  9    73 ms    73 ms    73 ms  ae-4.r21.sttlwa01.us.bb.gin.ntt.net [129.250.2.51]
+ 10   220 ms   412 ms   249 ms  ae-2.r22.sttlwa01.us.bb.gin.ntt.net [129.250.6.142]
+ 11   189 ms   286 ms   204 ms  ae-7.r21.osakjp02.jp.bb.gin.ntt.net [129.250.3.86]
+ 12   198 ms   196 ms   290 ms  ae-5.r22.osakjp02.jp.bb.gin.ntt.net [129.250.6.192]
+ 13   251 ms   260 ms   234 ms  ae-4.r22.tkokhk01.hk.bb.gin.ntt.net [129.250.6.235]
+ 14   244 ms   306 ms   230 ms  ae-5.r02.newthk02.hk.bb.gin.ntt.net [129.250.6.115]
+ 15   299 ms   280 ms   237 ms  203.131.246.146
+ 16     *        *        *     Request timed out.
+ 17   337 ms   226 ms   226 ms  180.76.3.151
+
+Trace complete.
