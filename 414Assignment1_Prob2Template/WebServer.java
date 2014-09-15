@@ -100,12 +100,14 @@ final class HttpRequest implements Runnable {
 		System.out.println(requestLine);
 
 		// Get and display the header lines
+		/*
 		String headerLine = in.readLine();
 		while(headerLine != CRLF && headerLine != "\n" && headerLine != null) {
 			System.out.println(headerLine);
 			headerLine = in.readLine();
 		}
-		
+		*/
+		System.out.println("checkpoint");
 		// (The last part of STEP 2 is at the end of this method)
 		// (Close the socket)
 		//socket.close();
@@ -147,7 +149,7 @@ final class HttpRequest implements Runnable {
 		// Send a HTTP response header containing the status line and
 		// content-type line. Don't forget to include a blank line after the
 		// content-type to signal the end of the header.
-		out.writeChars(statusLine + contentTypeLine + "/n");
+		out.writeChars(statusLine + contentTypeLine + "\n");
 		
 		// Send the body of the message (the web object)
 		// You may use the sendBytes helper method provided
