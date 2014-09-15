@@ -97,13 +97,13 @@ final class HttpRequest implements Runnable {
 
 		// Display the request line
 		System.out.println();
-		//System.out.println(requestLine);
+		System.out.println(requestLine);
 
 		// Get and display the header lines
-
-		while(requestLine != CRLF && requestLine != "\n" && requestLine != null) {
-			System.out.println(requestLine);
-			requestLine = in.readLine();
+		String headerLine = in.readLine();
+		while(headerLine != CRLF && headerLine != "\n" && headerLine != null) {
+			System.out.println(headerLine);
+			headerLine = in.readLine();
 		}
 		
 		// (The last part of STEP 2 is at the end of this method)
@@ -136,17 +136,27 @@ final class HttpRequest implements Runnable {
 
 		// Fill in the values of statusLine and contentTypeLine based on whether
 		// or not the requested file was found
-
+		if (fileExists) {
+			statusLine = "HTTP/1.1 200 OK" + CRLF;
+			contentTypeLine = "Content-Type: " + contentType(fileName) + CRLF;
+		} else {
+			statusLine = "HTTP/1.1 404 Not Found" + CRLF;
+			contentTypeLine = "Content-Type: text/html" + CRLF;
+		}
 		
 		// Send a HTTP response header containing the status line and
 		// content-type line. Don't forget to include a blank line after the
 		// content-type to signal the end of the header.
-		
+		out.writeChars(statusLine + contentTypeLine + "/n");
 		
 		// Send the body of the message (the web object)
 		// You may use the sendBytes helper method provided
-
-
+		if (fileExists) {
+			sendBytes(fis, out);
+		} else {
+			out.writeChars(errorMessage);
+		}
+		
 		// STEP 2b: Close the input/output streams and socket before returning
 		in.close();
 		out.close();
@@ -162,6 +172,10 @@ final class HttpRequest implements Runnable {
 	private static String contentType(String fileName) {
 		if (fileName.endsWith(".htm") || fileName.endsWith(".html")) {
 			return "text/html";
+		} else if (fileName.endsWith(".jpeg")) {
+			return "image/jpeg";
+		}  else if (fileName.endsWith(".gif")) {
+			return "image/gif";
 		}
 		// STEP 3b: Add code here to deal with GIFs and JPEGs
 		return "application/octet-stream";
