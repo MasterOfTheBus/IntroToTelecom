@@ -100,14 +100,15 @@ final class HttpRequest implements Runnable {
 		System.out.println(requestLine);
 
 		// Get and display the header lines
-		/*
 		String headerLine = in.readLine();
-		while(headerLine != CRLF && headerLine != "\n" && headerLine != null) {
+		while(headerLine != null) {
 			System.out.println(headerLine);
 			headerLine = in.readLine();
+			if (headerLine.length() == 0) {
+				break;
+			}
 		}
-		*/
-		System.out.println("checkpoint");
+
 		// (The last part of STEP 2 is at the end of this method)
 		// (Close the socket)
 		//socket.close();
