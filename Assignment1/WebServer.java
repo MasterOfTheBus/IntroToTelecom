@@ -149,7 +149,7 @@ final class HttpRequest implements Runnable {
 		// Send a HTTP response header containing the status line and
 		// content-type line. Don't forget to include a blank line after the
 		// content-type to signal the end of the header.
-		out.writeChars(statusLine + contentTypeLine + "\n");
+		out.writeBytes(statusLine + contentTypeLine + "\n");
 		
 		// Send the body of the message (the web object)
 		// You may use the sendBytes helper method provided
