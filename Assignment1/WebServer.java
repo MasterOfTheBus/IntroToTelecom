@@ -25,22 +25,22 @@ public final class WebServer {
 	public static void main(String argx[]) throws Exception {
 		// Step 1: Set the port number (may not work with 80)
 		int port = 6789;
-		
+
 		// Create the socket to listen for incoming connections
 		ServerSocket welcomeSocket = new ServerSocket(port);
-		
+
 		// Enter an infinite loop and process incoming connections
 		// Use Ctrl-C to quit the application
 		while (true) {
 			// Listen for a new TCP connection request
 			Socket socket = welcomeSocket.accept();
-			
+
 			// Construct an HttpRequest object to process the request message
 			HttpRequest req = new HttpRequest(socket);
-			
+
 			// Create a new thread to process the request
 			Thread t = new Thread(req);
-			
+
 			// Start the thread
 			t.start();
 		}
@@ -56,7 +56,7 @@ public final class WebServer {
 final class HttpRequest implements Runnable {
 	final static String CRLF = "\r\n";
 	Socket socket;
-	
+
 	/**
 	 * Constructor takes the socket for this request
 	 */
@@ -64,7 +64,7 @@ final class HttpRequest implements Runnable {
 	{
 		this.socket = socket;
 	}
-	
+
 	/**
 	 * Implement the run() method of the Runnable interface. 
 	 */
@@ -77,7 +77,7 @@ final class HttpRequest implements Runnable {
 			System.out.println(e);
 		}
 	}
-	
+
 	/**
 	 * This is where the action occurs
 	 * @throws Exception
@@ -88,9 +88,9 @@ final class HttpRequest implements Runnable {
 		// Get a reference to the socket's input and output streams
 		DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 		BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		
+
 		// Set up input stream filters
-		
+
 		// Get the request line of the HTTP request message
 		String requestLine;
 		requestLine = in.readLine();
@@ -112,17 +112,17 @@ final class HttpRequest implements Runnable {
 		// (The last part of STEP 2 is at the end of this method)
 		// (Close the socket)
 		//socket.close();
-		
+
 		// STEP 3a: Prepare and Send the HTTP Response message
 		// Extract the filename from the request line
 		StringTokenizer tokens = new StringTokenizer(requestLine);
 		tokens.nextToken(); // skip over the method, which we'll assume is "GET"
 		String fileName = tokens.nextToken();
-				
+
 		// Prepend a "." to the file name so that the file request is in the
 		// current directory
 		fileName = "." + fileName;
-		
+
 		// Open the requested file
 		FileInputStream fis = null;
 		boolean fileExists = true;
@@ -131,7 +131,7 @@ final class HttpRequest implements Runnable {
 		} catch (FileNotFoundException e) {
 			fileExists = false;
 		}
-		
+
 		// Construct the response message header
 		String statusLine = null;
 		String contentTypeLine = null;
@@ -146,12 +146,12 @@ final class HttpRequest implements Runnable {
 			statusLine = "HTTP/1.1 404 Not Found" + CRLF;
 			contentTypeLine = "Content-Type: text/html" + CRLF;
 		}
-		
+
 		// Send a HTTP response header containing the status line and
 		// content-type line. Don't forget to include a blank line after the
 		// content-type to signal the end of the header.
 		out.writeBytes(statusLine + contentTypeLine + "\n");
-		
+
 		// Send the body of the message (the web object)
 		// You may use the sendBytes helper method provided
 		if (fileExists) {
@@ -159,13 +159,13 @@ final class HttpRequest implements Runnable {
 		} else {
 			out.writeChars(errorMessage);
 		}
-		
+
 		// STEP 2b: Close the input/output streams and socket before returning
 		in.close();
 		out.close();
 		socket.close();
 	}
-	
+
 	/**
 	 * Private method that returns the appropriate MIME-type string based on the
 	 * suffix of the appended file
@@ -198,7 +198,7 @@ final class HttpRequest implements Runnable {
 		// Allocate a 1k buffer to hold bytes on their way to the socket
 		byte[] buffer = new byte[1024];
 		int bytes = 0;
-		
+
 		// Copy requested file into the socket's output stream
 		while ((bytes = fis.read(buffer)) != -1) {
 			os.write(buffer, 0, bytes);
